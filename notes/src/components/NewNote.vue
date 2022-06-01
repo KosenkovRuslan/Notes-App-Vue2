@@ -13,20 +13,30 @@ export default {
   props: {
     note: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
+
+    priorities: {
+      type: Object,
+      required: true,
+    },
+
+    selected: {
+      type: String,
+      required: true,
+    },
   },
 
   methods: {
     addNote() {
       this.$emit('add-note', this.note)
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style lang="scss">
-  .new-note {
-    text-align: center;
-  }
+.new-note {
+  text-align: center;
+}
 </style>
