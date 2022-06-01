@@ -8,24 +8,14 @@
           <message v-if="message" :message="message" />
 
           <!-- TODO New note -->
-          <div class="new-note">
-            <input v-model="note.title" type="text" />
-            <textarea v-model="note.descr"></textarea>
-            <button @click="addNote">New Note</button>
-          </div>
+          <newNote
+            :note="note"
+            @add-note="addNote" />
 
           <!-- TODO Note list -->
-          <div class="notes">
-            <div class="note" v-for="(note, index) in notes" :key="index">
-              <div class="note-header">
-                <p>{{ note.title }}</p>
-              </div>
-              <div class="note-body">
-                <p>{{ note.descr }}</p>
-                <span> {{ note.date }} </span>
-              </div>
-            </div>
-          </div>
+          <notes 
+            :notes=notes />
+
         </div>
       </section>
     </div>
@@ -34,10 +24,12 @@
 
 <script>
 import message from '@/components/Message.vue'
+import newNote from '@/components/NewNote.vue'
+import notes from '@/components/Notes.vue'
 export default {
   name: 'App',
   components: {
-    message
+    message, newNote, notes
   },
   data() {
     return {
