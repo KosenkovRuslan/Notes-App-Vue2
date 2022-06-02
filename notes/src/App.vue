@@ -10,6 +10,7 @@
           <newNote
             :note="note"
             :priorities="priorities"
+            :selected="selected"
             @add-note="addNote"
           />
 
@@ -108,26 +109,31 @@ export default {
       title: 'Notes App',
       search: '',
       message: null,
+      selected: '',
       grid: true,
       note: {
         title: '',
         descr: '',
+        color: '#fff'
       },
       notes: [
         {
           title: 'First Note',
           descr: 'Description for first Note',
           date: new Date(Date.now()).toLocaleString(),
+          color: '#fff'
         },
         {
           title: 'Second Note',
           descr: 'Description for second Note',
           date: new Date(Date.now()).toLocaleString(),
+          color: 'yellow'
         },
         {
           title: 'Third Note',
           descr: 'Description for third Note',
           date: new Date(Date.now()).toLocaleString(),
+          color: 'red'
         },
       ],
 
@@ -144,7 +150,7 @@ export default {
           value: 'Very important',
           color: 'red',
         },
-      },
+      }
     }
   },
 
@@ -171,7 +177,7 @@ export default {
   methods: {
     //TODO Adding new note with validation
     addNote() {
-      const { title, descr } = this.note
+      const { title, descr, color } = this.note
 
       if (title === '') {
         this.message = 'Заголовок не может быть пустым'
@@ -182,16 +188,18 @@ export default {
         title,
         descr,
         date: new Date(Date.now()).toLocaleString(),
+        color
       })
 
       this.message = null
       this.note.title = ''
       this.note.descr = ''
+      this.note.color = '#fff'
     },
 
     removeNote(index) {
       this.notes.splice(index, 1)
-    },
+    }
   },
 }
 </script>
