@@ -116,26 +116,7 @@ export default {
         descr: '',
         color: '#fff'
       },
-      notes: [
-        {
-          title: 'First Note',
-          descr: 'Description for first Note',
-          date: new Date(Date.now()).toLocaleString(),
-          color: '#fff'
-        },
-        {
-          title: 'Second Note',
-          descr: 'Description for second Note',
-          date: new Date(Date.now()).toLocaleString(),
-          color: 'yellow'
-        },
-        {
-          title: 'Third Note',
-          descr: 'Description for third Note',
-          date: new Date(Date.now()).toLocaleString(),
-          color: 'red'
-        },
-      ],
+      notes: null,
 
       priorities: {
         standart: {
@@ -201,6 +182,10 @@ export default {
       this.notes.splice(index, 1)
     }
   },
+
+  created() {
+    this.notes = this.$store.getters.getNotes
+  }
 }
 </script>
 
